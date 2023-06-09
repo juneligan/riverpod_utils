@@ -1,0 +1,34 @@
+name: example
+description: A new Flutter project.
+publish_to: 'none' 
+version: 1.0.0+1
+environment:
+  sdk: '>=3.0.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  build:
+  annotations:
+    path: ../annotations/
+  cupertino_icons: ^1.0.2
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.1
+  flutter_riverpod: ^2.3.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  generators:
+    path: ../generators/
+  flutter_lints: ^2.0.0
+  freezed: ^2.3.4
+  json_serializable: ^6.7.0
+flutter:
+  uses-material-design: true
+
+
+
+scripts:
+  build: dart run build_runner build --delete-conflicting-outputs
