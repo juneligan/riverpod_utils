@@ -6,20 +6,20 @@ publish_to: none
 environment:
   sdk: '>=3.0.2 <4.0.0'
   flutter: ">=1.17.0"
-ddependencies:
+dependencies:
   flutter:
     sdk: flutter
   build:
   source_gen:
   annotations:
-    path: ../annotations/
+    # path: ../annotations/
+    git: # if you want to use from git
+      url: https://github.com/juneligan/riverpod_utils.git
+      ref: main
+      path: ./annotations
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  build_config:
   build_runner:
-  annotations:
-    path: ../annotations/
-flutter:
-dependencies:
-  source_gen: ^1.3.2
