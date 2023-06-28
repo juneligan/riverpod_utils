@@ -3,10 +3,10 @@ targets:
     builders:
       generators|annotations:
         enabled: true
-      generators|copyBuilder:
-        generate_for:
-          - lib/*
-        enabled: True
+      # generators|copyBuilder:
+        # generate_for:
+        #   - lib/*
+        # enabled: True
 
 builders:
   generators:
@@ -17,10 +17,10 @@ builders:
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]
-  copyBuilder:
-    import: 'package:generators/generators.dart'
-    builder_factories: ['copyBuilder']
-    build_extensions: {".txt": [".copy.txt"]}
-    build_to: source
-    auto_apply: dependents
-    applies_builders: ["source_gen|combining_builder"]
+  # copyBuilder:
+  #   import: 'package:generators/generators.dart'
+  #   builder_factories: ['copyBuilder']
+  #   build_extensions: {".txt": [".copy.txt"]}
+  #   build_to: source
+  #   auto_apply: dependents
+  #   applies_builders: ["source_gen|combining_builder"]

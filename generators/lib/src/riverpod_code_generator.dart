@@ -11,19 +11,21 @@ class RiverpodCodeGenerator extends GeneratorForAnnotation<RiverpodProvider> {
       ConstantReader annotation, 
       BuildStep buildStep
     ) {
-      // TODO
       final ModelVisitor visitor = ModelVisitor();
       element.visitChildren(visitor);
+      // check visitor if abstract dart class
+      final isAbstract = visitor.hasExtensions;
 
       final concreteClassName = visitor.className;
       final providerName = annotation.peek('name')?.stringValue ?? concreteClassName;
       final type = annotation.peek('type')?.stringValue ?? 'Provider';
       final params = visitor.providers[concreteClassName]!;
+
       final buffer = StringBuffer();
       buffer.writeln('final ${providerName[0].toLowerCase()}${providerName.substring(1)}Provider = $type<$concreteClassName>((ref) {');
       buffer.write('return ');
 
-      if (params.isEmpty) {
+      if (params.isEmpty &&  !isAbstract) {
         buffer.write('const ');
       }
 
@@ -37,10 +39,10 @@ class RiverpodCodeGenerator extends GeneratorForAnnotation<RiverpodProvider> {
       return buffer.toString();
     }
 
-  @override
-  Map<String, List<String>> get buildExtensions => {
-        '.txt': ['.copy.txt']
-      };
+  // @override
+  // Map<String, List<String>> get buildExtensions => {
+  //       '.txt': ['.copy.txt']
+  //     };
 
 //   @override
 //   Future<void> build(BuildStep buildStep) async {
